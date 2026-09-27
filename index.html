@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ScaleForge helps small businesses build stronger brands, better content and a more effective online presence.">
+<title>ScaleForge — Build. Scale. Stand Out.</title>
+<style>
+:root{--bg:#080b12;--card:#101622;--card2:#151d2c;--text:#f5f7fb;--muted:#aab4c5;--accent:#7c5cff;--accent2:#19d3ae;--line:#263044;--max:1120px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 85% 5%,#24175a 0,transparent 28%),var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(92%,var(--max));margin:auto}
+nav{position:sticky;top:0;z-index:10;background:rgba(8,11,18,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.navin{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:21px;letter-spacing:-.7px}.logo span{color:var(--accent2)}
+.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}
+.navlinks a:hover{color:white}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 19px;border-radius:12px;font-weight:800;font-size:14px;transition:.2s;border:1px solid transparent}
+.btn.primary{background:linear-gradient(135deg,var(--accent),#a06cff);box-shadow:0 10px 30px #7c5cff2c}.btn.primary:hover{transform:translateY(-2px)}
+.btn.ghost{border-color:var(--line);background:#ffffff05}.btn.ghost:hover{background:#ffffff0b}
+.hero{padding:88px 0 70px;text-align:center}
+.badge{display:inline-block;padding:7px 11px;border:1px solid #7c5cff55;background:#7c5cff12;color:#c9bfff;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:20px}
+h1{font-size:clamp(44px,8vw,78px);line-height:.98;letter-spacing:-4px;max-width:900px;margin:0 auto 22px}
+.gradient{background:linear-gradient(90deg,#fff,var(--accent2),#9b7cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:0 auto 28px;color:var(--muted);font-size:18px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:42px auto 0;max-width:720px}
+.stat{padding:17px;border:1px solid var(--line);border-radius:16px;background:#ffffff04}.stat b{display:block;font-size:22px}.stat span{color:var(--muted);font-size:12px}
+section{padding:72px 0}
+.sectionhead{margin-bottom:30px}.eyebrow{color:var(--accent2);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.6px}.sectionhead h2{font-size:clamp(30px,5vw,45px);line-height:1.1;margin:8px 0}.sectionhead p{color:var(--muted);max-width:650px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:linear-gradient(180deg,var(--card),#0d131f);border:1px solid var(--line);border-radius:20px;padding:24px}
+.icon{width:45px;height:45px;border-radius:13px;display:grid;place-items:center;background:#7c5cff16;border:1px solid #7c5cff33;font-size:21px;margin-bottom:17px}
+.card h3{font-size:19px;margin-bottom:7px}.card p{color:var(--muted);font-size:14px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px}.tag{font-size:11px;color:#c4ccda;border:1px solid var(--line);padding:5px 8px;border-radius:999px}
+.portfolio{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:var(--card)}
+.mock{height:230px;padding:22px;position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.mock:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-55px;top:-55px;background:#ffffff16}
+.fashion{background:linear-gradient(135deg,#17111e,#43215d)}.food{background:linear-gradient(135deg,#142019,#18544a)}.phone{background:linear-gradient(135deg,#111827,#243b70)}.barber{background:linear-gradient(135deg,#171717,#513d22)}
+.mock small{font-weight:800;opacity:.75}.mock strong{font-size:31px;line-height:1.05;max-width:280px;z-index:1}.mock em{font-style:normal;font-size:12px;opacity:.8;z-index:1}
+.projectbody{padding:20px}.projectbody h3{margin-bottom:5px}.projectbody p{color:var(--muted);font-size:13px}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.price{position:relative}.price.featured{border-color:#7c5cff88;box-shadow:0 15px 45px #7c5cff12}
+.pop{position:absolute;right:16px;top:16px;font-size:10px;background:var(--accent);padding:5px 8px;border-radius:999px;font-weight:900}
+.price h3{font-size:20px}.amount{font-size:34px;font-weight:900;margin:12px 0 3px}.amount small{font-size:13px;color:var(--muted);font-weight:500}.price>p{color:var(--muted);font-size:13px}
+.features{list-style:none;margin:22px 0}.features li{font-size:13px;color:#d9deea;padding:8px 0;border-bottom:1px solid #ffffff08}.features li:before{content:"✓";color:var(--accent2);font-weight:900;margin-right:8px}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{padding:20px;border:1px dashed #344057;border-radius:18px}.num{color:var(--accent2);font-weight:900;font-size:12px}.step h3{margin:6px 0}.step p{font-size:13px;color:var(--muted)}
+.cta{padding:50px;border:1px solid #7c5cff44;border-radius:26px;background:radial-gradient(circle at 80% 0,#7c5cff22,transparent 35%),linear-gradient(135deg,#11172a,#0d131f);display:flex;align-items:center;justify-content:space-between;gap:25px}.cta h2{font-size:clamp(28px,5vw,44px);line-height:1.05}.cta p{color:var(--muted);margin-top:8px;max-width:600px}
+footer{padding:32px 0 50px;color:#7f8a9e;font-size:12px;border-top:1px solid #ffffff08;margin-top:30px}.foot{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:800px){.navlinks{display:none}.grid3,.pricing,.portfolio{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.hero{padding-top:65px}h1{letter-spacing:-2.5px}.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:1/-1}.cta{padding:30px;flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){section{padding:55px 0}.process{grid-template-columns:1fr}.hero p{font-size:16px}.card,.projectbody{padding:20px}.mock{height:205px}.foot{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><div class="container navin">
+<a class="logo" href="#">Scale<span>Forge</span></a>
+<div class="navlinks"><a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
+<a class="btn primary" href="https://wa.me/233202209859?text=Hi%20ScaleForge%2C%20I%27d%20like%20a%20free%20brand%20audit." target="_blank">Free Audit</a>
+</div></nav>
+
+<header class="hero"><div class="container">
+<div class="badge">BRAND • CONTENT • GROWTH</div>
+<h1>Build a brand people <span class="gradient">remember.</span></h1>
+<p>ScaleForge helps small businesses look more professional online, create better content, and turn attention into customer conversations.</p>
+<div class="actions"><a class="btn primary" href="#contact">Scale My Brand →</a><a class="btn ghost" href="#work">See Our Work</a></div>
+<div class="stats"><div class="stat"><b>3×</b><span>Core growth services</span></div><div class="stat"><b>Mobile-first</b><span>Built for today's audience</span></div><div class="stat"><b>Free audit</b><span>Start before you commit</span></div></div>
+</div></header>
+
+<section id="services"><div class="container">
+<div class="sectionhead"><div class="eyebrow">What we do</div><h2>Everything your brand needs to look sharper.</h2><p>Simple, practical services for businesses that want a stronger online presence without agency-level complexity.</p></div>
+<div class="grid3">
+<div class="card"><div class="icon">✦</div><h3>Brand Makeover</h3><p>Refresh your visual identity, profile, bio, colors and presentation so customers instantly understand what you offer.</p><div class="tags"><span class="tag">Visual identity</span><span class="tag">Profile</span><span class="tag">Bio</span></div></div>
+<div class="card"><div class="icon">◉</div><h3>Content Engine</h3><p>Get scroll-stopping posts, captions and short-form video concepts designed around your products and audience.</p><div class="tags"><span class="tag">Canva</span><span class="tag">Reels</span><span class="tag">Captions</span></div></div>
+<div class="card"><div class="icon">↗</div><h3>Growth Strategy</h3><p>Turn random posting into a repeatable system with content pillars, posting plans, competitor research and tracking.</p><div class="tags"><span class="tag">Strategy</span><span class="tag">Research</span><span class="tag">Analytics</span></div></div>
+</div></div></section>
+
+<section id="work"><div class="container">
+<div class="sectionhead"><div class="eyebrow">Portfolio</div><h2>Demo transformations.</h2><p>These are sample projects created to demonstrate what ScaleForge can do. Replace them with real client work as you build your portfolio.</p></div>
+<div class="portfolio">
+<div class="project"><div class="mock fashion"><small>DEMO BRAND / 01</small><strong>NOIR<br>STREETWEAR</strong><em>Brand refresh • Social content</em></div><div class="projectbody"><h3>Noir Streetwear</h3><p>Visual refresh + product-post system for a fashion brand targeting young online shoppers.</p></div></div>
+<div class="project"><div class="mock food"><small>DEMO BRAND / 02</small><strong>GREEN<br>PLATE</strong><em>Content strategy • Reels</em></div><div class="projectbody"><h3>Green Plate</h3><p>Content direction for a food business focused on making its products more discoverable.</p></div></div>
+<div class="project"><div class="mock phone"><small>DEMO BRAND / 03</small><strong>VOLT<br>MOBILE</strong><em>Brand makeover • Promotions</em></div><div class="projectbody"><h3>Volt Mobile</h3><p>Cleaner product presentation and promotional content for a phone and accessories store.</p></div></div>
+<div class="project"><div class="mock barber"><small>DEMO BRAND / 04</small><strong>GOLD<br>LINE BARBER</strong><em>Identity • Social presence</em></div><div class="projectbody"><h3>Gold Line Barber</h3><p>Premium-looking identity and social content direction for a local grooming brand.</p></div></div>
+</div></div></section>
+
+<section id="pricing"><div class="container">
+<div class="sectionhead"><div class="eyebrow">Packages</div><h2>Start small. Scale when you're ready.</h2><p>Simple starter pricing. Final quotes can change depending on the amount of work involved.</p></div>
+<div class="pricing">
+<div class="card price"><h3>Starter</h3><div class="amount">GH₵150 <small>/ project</small></div><p>For businesses that need a cleaner first impression.</p><ul class="features"><li>Profile/bio optimization</li><li>Brand direction</li><li>3 social post designs</li><li>1 revision round</li></ul><a class="btn ghost" href="https://wa.me/233202209859?text=Hi%20ScaleForge%2C%20I%27m%20interested%20in%20the%20Starter%20package." target="_blank">Get Starter</a></div>
+<div class="card price featured"><span class="pop">POPULAR</span><h3>Growth</h3><div class="amount">GH₵350 <small>/ project</small></div><p>For businesses ready to become more consistent online.</p><ul class="features"><li>Mini brand makeover</li><li>10 social post designs</li><li>Captions + content ideas</li><li>7-day content plan</li><li>2 revision rounds</li></ul><a class="btn primary" href="https://wa.me/233202209859?text=Hi%20ScaleForge%2C%20I%27m%20interested%20in%20the%20Growth%20package." target="_blank">Get Growth</a></div>
+<div class="card price"><h3>Scale</h3><div class="amount">GH₵650 <small>/ month</small></div><p>For brands wanting ongoing content and strategy.</p><ul class="features"><li>Monthly content strategy</li><li>15 social designs</li><li>Short-form video concepts</li><li>Competitor research</li><li>Monthly performance review</li></ul><a class="btn ghost" href="https://wa.me/233202209859?text=Hi%20ScaleForge%2C%20I%27m%20interested%20in%20the%20Scale%20package." target="_blank">Get Scale</a></div>
+</div></div></section>
+
+<section><div class="container">
+<div class="sectionhead"><div class="eyebrow">How it works</div><h2>From idea to stronger brand.</h2></div>
+<div class="process"><div class="step"><div class="num">01</div><h3>Audit</h3><p>We look at your current online presence and identify practical improvements.</p></div><div class="step"><div class="num">02</div><h3>Plan</h3><p>We choose the right visual direction and content approach for your business.</p></div><div class="step"><div class="num">03</div><h3>Create</h3><p>We produce the agreed designs, copy and content assets.</p></div><div class="step"><div class="num">04</div><h3>Scale</h3><p>You publish, learn from the response and build a stronger system over time.</p></div></div>
+</div></section>
+
+<section id="contact"><div class="container"><div class="cta">
+<div><div class="eyebrow">Let's work</div><h2>Ready to make your brand stand out?</h2><p>Message ScaleForge on WhatsApp for a free 3-point brand audit. No pressure—just practical feedback.</p></div>
+<a class="btn primary" href="https://wa.me/233202209859?text=Hi%20ScaleForge%2C%20I%27d%20like%20my%20free%203-point%20brand%20audit." target="_blank">WhatsApp ScaleForge →</a>
+</div></div></section>
+
+<footer><div class="container foot"><span>© 2026 ScaleForge. Built to help small brands grow.</span><span>Brand • Content • Growth</span></div></footer>
+</body></html>
