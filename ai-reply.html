@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KoraReply — Smart Customer Replies</title>
+<style>
+:root{--bg:#070b12;--card:#101722;--line:#253044;--text:#f5f7fb;--muted:#9eabbe;--a:#7c5cff;--b:#19d3ae}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 80% 0,#24175a 0,transparent 30%),var(--bg);color:var(--text)}
+.wrap{width:min(94%,900px);margin:auto}nav{padding:18px 0;border-bottom:1px solid #ffffff0b}.logo{font-weight:900;font-size:22px}.logo span{color:var(--b)}
+.hero{padding:46px 0 25px}.badge{display:inline-block;border:1px solid #7c5cff55;background:#7c5cff12;color:#cfc6ff;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(38px,8vw,64px);line-height:1;letter-spacing:-2.5px;margin:15px 0}.grad{background:linear-gradient(90deg,#fff,var(--b),#a18aff);-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:680px;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:linear-gradient(180deg,var(--card),#0c121c);border:1px solid var(--line);border-radius:20px;padding:20px}.card h2{font-size:18px;margin:0 0 14px}
+label{display:block;color:#cbd3df;font-size:12px;font-weight:800;margin:14px 0 7px}input,textarea,select{width:100%;border:1px solid var(--line);background:#080d15;color:var(--text);border-radius:12px;padding:12px;font:inherit;outline:none}textarea{min-height:125px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#7c5cff88}
+button{width:100%;border:0;border-radius:12px;padding:13px;background:linear-gradient(135deg,var(--a),#a06cff);color:white;font-weight:900;margin-top:16px;cursor:pointer}.copy{background:#ffffff08;border:1px solid var(--line)}
+.output{min-height:190px;white-space:pre-wrap;line-height:1.65;color:#e8edf5}.hint{font-size:11px;color:#77849a;margin-top:10px}.status{font-size:12px;color:var(--b);min-height:18px;margin-top:10px}
+footer{padding:35px 0;color:#68758a;font-size:12px}@media(max-width:720px){.grid{grid-template-columns:1fr}.hero{padding-top:35px}}
+</style></head>
+<body>
+<nav><div class="wrap"><div class="logo">Kora<span>Reply</span></div></div></nav>
+<header class="hero"><div class="wrap"><div class="badge">SMART BUSINESS TOOL • MVP</div>
+<h1>Turn customer messages into <span class="grad">better replies.</span></h1>
+<p>Enter your business details and a customer's message. KoraReply creates a ready-to-send reply in seconds.</p></div></header>
+<main class="wrap grid">
+<section class="card"><h2>Business profile</h2>
+<label>Business name</label><input id="biz" placeholder="e.g. Abdul's Fashion">
+<label>What do you sell?</label><input id="offer" placeholder="e.g. watches, clothes and shoes">
+<label>Price / key information</label><input id="info" placeholder="e.g. watches from GH₵150, delivery available">
+<label>Reply style</label><select id="tone"><option>Friendly and professional</option><option>Short and direct</option><option>Warm and persuasive</option></select></section>
+<section class="card"><h2>Customer message</h2>
+<label>Paste the message here</label><textarea id="msg" placeholder="e.g. How much is this watch and do you deliver to Kumasi?"></textarea>
+<button id="go">Generate reply</button><div id="status" class="status"></div>
+<p class="hint">MVP mode: this version runs in the browser and does not send customer messages to a server.</p></section>
+<section class="card" style="grid-column:1/-1"><h2>Your reply</h2><div id="out" class="output">Your generated reply will appear here.</div><button class="copy" id="copy">Copy reply</button></section>
+</main><footer><div class="wrap">KoraReply MVP • Small-business customer reply assistant.</div></footer>
+<script>
+function byId(x){return document.getElementById(x)}
+function generate(){
+ var biz=byId('biz').value.trim()||'our business';
+ var offer=byId('offer').value.trim()||'our products';
+ var info=byId('info').value.trim()||'we can confirm the latest price and delivery details';
+ var tone=byId('tone').value; var m=byId('msg').value.trim();
+ if(!m){byId('status').textContent='Enter a customer message first.';return}
+ var low=m.toLowerCase(), reply='';
+ if(/price|how much|cost|gh₵|cedi/.test(low)){
+   reply='Hi! 👋 Thanks for reaching out to '+biz+'. Our '+offer+' are available, and '+info+'. If you tell me the exact item you are interested in, I can help you with the details. 😊';
+ }else if(/deliver|delivery|ship|kumasi|accra|location|where/.test(low)){
+   reply='Hi! 👋 Yes, thanks for your message. We can help with '+offer+'. '+info+'. Please send your location and the exact item you want, and we will guide you through the next step. 😊';
+ }else if(/available|stock|have this|in stock/.test(low)){
+   reply='Hi! 👋 Thanks for checking with '+biz+'. Yes, we can help with '+offer+'. Please send the name or photo of the exact item you are asking about and we will confirm availability for you.';
+ }else if(/order|buy|purchase|want one|interested/.test(low)){
+   reply='Thanks for choosing '+biz+'! 🙌 We would be happy to help you order '+offer+'. Please send the exact item you want plus your location, and we will take you through the next step.';
+ }else{
+   reply='Hi! 👋 Thanks for contacting '+biz+'. We would be happy to help with '+offer+'. '+info+'. Please tell us a little more about what you need and we will assist you right away.';
+ }
+ if(tone==='Short and direct'){reply=reply.replace('Thanks for reaching out to '+biz+'. ','').replace('Please send your location and the exact item you want, and we will guide you through the next step.','Send your location and item and we will guide you.')}
+ if(tone==='Warm and persuasive'){reply=reply.replace('Hi! 👋','Hi there! 👋').replace('we can help','we would love to help')}
+ byId('out').textContent=reply;byId('status').textContent='Reply generated ✓';
+}
+byId('go').onclick=generate;
+byId('copy').onclick=async function(){var t=byId('out').textContent;if(t&&t!=='Your generated reply will appear here.'){await navigator.clipboard.writeText(t);byId('status').textContent='Copied ✓'}};
+</script></body></html>
